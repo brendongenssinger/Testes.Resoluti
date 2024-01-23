@@ -10,7 +10,12 @@ namespace Pessoa.BackEnd.Repository
         }
         public async Task Salvar(DadosPessoais dadosPessoais)
         {
+            throw new NotImplementedException();
+        }
 
+        internal Task<List<DadosPessoais>> Listar(int idPessoa)
+        {
+            throw new NotImplementedException();
         }
     }
 }

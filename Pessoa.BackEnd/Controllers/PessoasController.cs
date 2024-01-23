@@ -18,12 +18,27 @@ namespace Pessoa.BackEnd.Controllers
         }
 
         [HttpPost(Name ="Cadastrar Pessoa",Order = 0)]
-        public async IActionResult Post(DadosPessoais dadosPessoais)
+        public async Task<ActionResult> Post(DadosPessoais dadosPessoais)
         {
             try
             {
                await _pessoaService.CadastrarPessoas(dadosPessoais);
-                return StatusCode(200,"OK");
+               return StatusCode(200,"OK");
+            }
+            catch (Exception eX)
+            {
+                _log.LogError(eX, "Error Controller [Pessoas Controller]");
+                return StatusCode(400);
+            }
+        }
+
+        [HttpGet(Name = "Listar Pessoas", Order = 0)]
+        public async Task<IActionResult> Get(int idPessoas)
+        {
+            try
+            {
+                await _pessoaService.GetPessoas(idPessoas);
+                return StatusCode(200, "OK");
             }
             catch (Exception eX)
             {

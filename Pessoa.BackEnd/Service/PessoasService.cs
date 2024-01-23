@@ -21,5 +21,10 @@ namespace Pessoa.BackEnd.Service
 
             await _pessoasRepository.Salvar(dadosPessoais);
         }
+
+        internal async Task GetPessoas(int idPessoa)
+        {
+            await _pessoasRepository.Listar(idPessoa);
+        }
     }
 }
